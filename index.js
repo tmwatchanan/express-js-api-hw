@@ -1,12 +1,26 @@
 // app.js – entry point for Node.js application
-const http = require(http);
-const hostname = '127.0.0.1';
-const port = 3000;
-const server = http.createServer((req,res) => {
-res.statusCode = 200;
-res.setHeader('Content-type', 'text/plain');
-res.end('Hello World');
+var express = require('express');
+var bodyParser = require('body-parser');
+var path = require('path');
+var app = express();
+
+var users = require('./data/users');
+
+/* Body Parser Middleware */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded( {extended: true} ));
+/* Path for static content: Angular, Vue.js, html, js, css */
+// Create ‘index.html’ file inside the ‘public’ directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.listen(3000, function() {
+    console.log('Server Started on Port 3000…');
 });
-server.listen(port, hostname, () => {
-console.log('Server started on port ' + port);
+
+app.get('/', function(req, res) {
+    res.send('Hello World..');
+});
+
+app.get('/users', function(req, res) {
+    res.json(users);
 });
