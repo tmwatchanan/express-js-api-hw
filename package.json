@@ -9,6 +9,10 @@
   "author": "Watchanan Chantapakul",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.3",
+    "morgan": "^1.9.0"
   }
 }
