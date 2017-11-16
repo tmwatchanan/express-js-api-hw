@@ -1,0 +1,11 @@
+{
+  "name": "express-js-api-hw",
+  "version": "1.0.0",
+  "description": "Express.js assignment of 261405",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Watchanan Chantapakul",
+  "license": "ISC"
+}
