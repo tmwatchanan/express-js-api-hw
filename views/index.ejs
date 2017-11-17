@@ -8,13 +8,15 @@
         <label>Age</label><br>
         <input type="number" name="age"><br>
         <label>Email</label><br>
-        <input type="text" name="email"><br><br>
+        <input type="text" name="email"><br>
+        <label>Password</label><br>
+        <input type="password" name="password"><br><br>
         <input type="submit" value="Add">
     </form>
 
     <ul>
         <% users.forEach( function(user) { %>
-        <li><%= user.name %> (<%= user.age %>)</li>
+        <li><%= user.id %>. <%= user.name %> (<%= user.age %>) -> <%= user.email %></li>
         <% }) %>
     </ul>
     
