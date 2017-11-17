@@ -9,8 +9,6 @@ var jwt = require('jsonwebtoken'); // token authentication
 var config = require('./config'); // global config
 var hash = require('./hash'); // passwd hashing module
 
-var request = require('request');
-
 var port = process.env.PORT || config.port // load port config
 var hostname = config.hostname; // load hostname config
 
