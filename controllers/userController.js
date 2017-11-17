@@ -128,13 +128,13 @@ exports.editUserById = function (req, res) {
     }).update(req.body, (err) => { // req.params.id = 101
         // if (err) throw err;
         if (err) {
-            let errorMessage = 'Unable to UPDATE the user id:' + req.params.id;
+            var errorMessage = 'Unable to UPDATE the user id:' + req.params.id;
             return res.json({
                 success: false,
                 message: errorMessage,
             });
         } else {
-            let successfulMessage = 'The user id:' + req.params.id + ' has been UPDATED';
+            var successfulMessage = 'The user id:' + req.params.id + ' has been UPDATED';
             return res.json({
                 success: true,
                 message: successfulMessage
@@ -149,13 +149,13 @@ exports.deleteUserById = function (req, res) {
     }).remove((err) => { // req.params.id = 101
         // if (err) throw err;
         if (err) {
-            let errorMessage = 'Unable to DELETE the user id:' + req.params.id;
+            var errorMessage = 'Unable to DELETE the user id:' + req.params.id;
             return res.json({
                 success: false,
                 message: errorMessage,
             });
         } else {
-            let successfulMessage = 'The user id:' + req.params.id + ' has been deleted';
+            var successfulMessage = 'The user id:' + req.params.id + ' has been DELETED';
             return res.json({
                 success: true,
                 message: successfulMessage
