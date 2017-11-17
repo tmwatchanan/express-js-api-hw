@@ -10,7 +10,6 @@ var config = require('./config'); // global config
 var hash = require('./hash'); // passwd hashing module
 
 var port = process.env.PORT || config.port // load port config
-var hostname = config.hostname; // load hostname config
 
 // mongoose.createConnection(config.database); // setup mongoose, use createConnection instead of connect
 //Set up default mongoose connection
@@ -55,7 +54,7 @@ app.get('/', function (req, res) {
 //     res.send('Hello! The API is at http://localhost:' + port + '/api');
 // });
 
-app.listen(port, hostname, () => {
+app.listen(port, () => {
     console.log('Simple API started at http://localhost:' + port);
 });
 
