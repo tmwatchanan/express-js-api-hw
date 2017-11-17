@@ -9,6 +9,8 @@ var jwt = require('jsonwebtoken'); // token authentication
 var config = require('./config'); // global config
 var hash = require('./hash'); // passwd hashing module
 
+var request = require('request');
+
 var port = process.env.PORT || config.port // load port config
 var hostname = config.hostname; // load hostname config
 
@@ -32,17 +34,32 @@ app.use(bodyParser.json());
 // use morgan to log requests to the console
 app.use(morgan('dev'));
 
+var path = require('path');
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// import functions defined as User’s controller
+var Users = require('./controllers/userController.js');
+var User = require('./models/User');
+
+/* handle GET request */
 app.get('/', function (req, res) {
-    res.send('Hello! The API is at http://localhost:' + port + '/api');
+    User.find((err, people) => { // Define what to do
+        if (err) throw err; // when query finished.
+        res.render('index', { // passing params
+            title: 'Customer List',
+            users: people
+        });
+    });
 });
+
+// app.get('/', function (req, res) {
+//     res.send('Hello! The API is at http://localhost:' + port + '/api');
+// });
 
 app.listen(port, hostname, () => {
     console.log('Simple API started at http://localhost:' + port);
 });
-
-// import functions defined as User’s controller
-var Users = require('./controllers/userController.js');
-
 
 app.post('/login', function (req, res) {
     Users.login(req, res);
@@ -80,7 +97,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/user', function (req, res) {
-    Users.getUsers(req, res); // passing request and respond objs.
+    Users.getUsers(req, res);
 });
 
 app.get('/user/oid/:_id', function (req, res) {
